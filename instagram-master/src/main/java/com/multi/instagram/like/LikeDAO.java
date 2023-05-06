@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.multi.instagram.board.BoardDTO;
+import com.multi.instagram.board.BoardFileDTO;
 
 @Repository
 public interface LikeDAO {
@@ -18,5 +19,7 @@ public interface LikeDAO {
 	int insert_like(int boardId, int userId);
 	List<LikeDTO> select_like(int boardId, int userId);
 	List<BoardDTO> like_List(int userId);
+	
+	List<BoardFileDTO> select_like_board(int userId);
 
 }

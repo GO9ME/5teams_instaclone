@@ -1,15 +1,12 @@
 package com.multi.instagram.board;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,21 +36,26 @@ public class BoardController {
 	public ModelAndView mainPage(HttpSession session) {
 		MemberDTO memberDto = (MemberDTO) session.getAttribute("loginUser");
 		int userId = Integer.parseInt(memberDto.getId()); 
+		
 		ModelAndView mav = new ModelAndView("main/instagram_main_page");
 		List<BoardDTO> boardlist = boardservice.selectBoard();
 		List<BoardFileDTO> boardfilelist = boardservice.selectFile();
 		List<MemberDTO> memberlist = memberserivce.member_list();
+//		System.out.println(boardlist);
+		
 		for (BoardDTO dto : boardlist) {
 			List<LikeDTO> count = likeservice.select(dto.getBoardId(),userId);
+			System.out.println("count : " + count);
 			dto.setLikeList(count);			
 		}
 		
-//		System.out.println(boardlist);
+//		System.out.println(">>>>>>>>> 세팅후 " + boardlist);
 //		System.out.println(boardfilelist);
 //		System.out.println(memberlist);
 		mav.addObject("boardlist", boardlist);
 		mav.addObject("boardfilelist", boardfilelist);
 		mav.addObject("memberlist", memberlist);
+		
 		return mav;
 	}
 	

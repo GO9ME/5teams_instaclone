@@ -47,6 +47,8 @@ public class LikeServiceImpl implements LikeService{
 		// TODO Auto-generated method stub
 		return dao.like_List(userId);
 	}
+	
+	
 
 	
 

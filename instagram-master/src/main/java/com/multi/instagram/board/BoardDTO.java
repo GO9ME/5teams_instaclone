@@ -19,6 +19,7 @@ public class BoardDTO {
 	// 좋아요 관련
 	private int like_count;
 	
+	// 좋아요 유무
 	private List<LikeDTO> likeList;
 	
 	public List<LikeDTO> getLikeList() {
@@ -111,8 +112,9 @@ public class BoardDTO {
 
 	@Override
 	public String toString() {
-		return "BoardDTO [boardId=" + boardId + ", writerId=" + writerId + ", boardContent=" + boardContent
-				+ ", boardTimestamp=" + boardTimestamp + ", boardfiles=" + boardfiles + "]";
+		return "BoardDTO [boardContent=" + boardContent + ", boardfiles=" + boardfiles + ", boardId=" + boardId
+				+ ", boardTimestamp=" + boardTimestamp + ", like_count=" + like_count + ", likeList=" + likeList
+				+ ", writerId=" + writerId + "]";
 	}
 
 	//getter & setter

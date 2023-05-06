@@ -96,6 +96,7 @@
 								String imgName = "like";
 								if (count != null) {
 									imgName = count.size() > 0 ? "like2" : "like";
+									// 변수명  = 조건 ? true일때 : false 일떄
 								}
 								%> <img src="/instagram/images/<%=imgName%>.png" class="icon"
 								id="likeHeart" alt="">
